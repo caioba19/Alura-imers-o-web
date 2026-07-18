@@ -203,7 +203,7 @@ O álbum carrega as 30 figurinhas automaticamente da API.
 
 **Caio Vinicius** — SRE/DevOps
 
-[![GitHub](https://img.shields.io/badge/GitHub-caioba19-181717?style=flat-square&logo=github)]([https://github.com/crfjunior65](https://github.com/caioba19))
+[![GitHub](https://img.shields.io/badge/GitHub-caioba19-181717?style=flat-square&logo=github)](https://github.com/caioba19)
 
 ---
 
