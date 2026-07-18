@@ -192,8 +192,8 @@ O álbum carrega as 30 figurinhas automaticamente da API.
 
 | Documento | Descrição |
 |-----------|-----------|
-| [BackEnd/README.md](BackEnd/README.md) | Documentação técnica da API |
-| [FrontEnd/README.md](FrontEnd/README.md) | Explicação didática do frontend |
+| [backend/README.md](backend/README.md) | Documentação técnica da API |
+| [frontend/README.md](frontend/README.md) | Explicação didática do frontend |
 | [Docs/ANALISE_PROJETO.md](Docs/ANALISE_PROJETO.md) | Análise técnica e pontos de evolução |
 | [Docs/Prompts](Docs/Prompts) | Histórico de prompts usados nas aulas |
 
