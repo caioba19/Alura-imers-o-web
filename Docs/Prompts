@@ -1,0 +1,146 @@
+# Prompts - chat-1
+
+1. De forma resumida explique para mim o que cada um destes arquivos faz
+
+2. Crie um readme.md do projeto que explique o seu objetivo e as funcionalidades dos arquivos envolvidos
+
+3. Em que parte do projeto estâo definidas as cores utilizadas?
+
+4. Dentro do bloco root do arquivo @[style.css] modifique o esquema de cores para variações da cor magenta
+
+# Prompts - Aula 2
+
+1. Crie um ambiente virtual em Python usando a venv e faça a ativação
+
+2. Instale o uvicorn na venv deste projeto
+
+3. Você vai criar o primeiro servidor de uma API de álbum de figurinhas.
+
+   Crie um arquivo main.py com um servidor FastAPI que tenha apenas 1 endpoint:
+
+   1. GET "/" → retorna o JSON {"mensagem": "Olá, mundo! 🌍"}
+      (use uma função chamada hello_world)
+
+   Requisitos:
+   - Use apenas Python com FastAPI (import: from fastapi import FastAPI)
+   - Crie a aplicação com app = FastAPI()
+   - Adicione comentários em português explicando cada parte
+   - Não adicione nenhum outro endpoint
+
+4. No mesmo arquivo main.py, adicione um segundo endpoint, mantendo o endpoint "/" que já existe:
+
+   2. GET "/figurinhas" → retorna uma lista com 2 figurinhas de exemplo
+      (use uma função chamada listar_figurinhas)
+      Cada figurinha é um objeto com os campos:
+        - id (número inteiro)
+        - nome (texto)
+        - categoria (texto)
+      Use estas duas figurinhas:
+        - {id: 1, nome: "Alan Turing",   categoria: "IA"}
+        - {id: 2, nome: "John McCarthy", categoria: "IA"}
+
+   Requisitos:
+   - Mantenha tudo que já existe no arquivo
+   - Adicione comentários em português
+   - Não adicione nenhum endpoint além desses dois
+
+# Prompts - Aula 3
+
+1. Evolua o servidor da API de álbum de figurinhas para também servir
+   as imagens das figurinhas como arquivos estáticos.
+
+   Atualize o arquivo main.py com um servidor FastAPI que:
+
+   1. Use a aplicação com app = FastAPI()
+
+   2. Defina o caminho absoluto da pasta de imagens (para o servidor encontrar
+      a pasta independente de onde for executado):
+        PASTA_BASE = os.path.dirname(os.path.abspath(__file__))
+        PASTA_IMAGENS = os.path.join(PASTA_BASE, "figurinhas")
+
+   3. Configure os arquivos estáticos: "monte" a pasta PASTA_IMAGENS na rota "/imgs"
+      usando StaticFiles, com name="imgs".
+      Assim, "figurinhas/01-alan-turing.jpg" fica acessível em "/imgs/01-alan-turing.jpg".
+
+   4. Tenha uma lista chamada "figurinhas" com 2 itens, cada um com os campos
+      id, nome, categoria e imagem_url:
+        - {id: 1, nome: "Alan Turing",   categoria: "IA", imagem_url: "/imgs/01-alan-turing.jpg"}
+        - {id: 2, nome: "John McCarthy", categoria: "IA", imagem_url: "/imgs/02-john-mccarthy.jpg"}
+
+   5. Tenha apenas um endpoint: GET "/figurinhas" (função listar_figurinhas)
+      que retorna a lista de figurinhas.
+
+   Requisitos:
+   - Use Python com FastAPI
+   - Adicione comentários em português explicando cada parte
+   - Imports necessários:
+       from fastapi import FastAPI
+       from fastapi.staticfiles import StaticFiles
+       import os
+--- Prompt usado Aula On-Line
+No mesmo arquivo main.py, adicione um segundo endpoint, mantendo oendpoint "/" que ja existe
+2. GET "/figurinhas" -> retorna uma lista com 2 figurinhas de exemplo(use uma função chamada listar_figurinhas)
+   Cada figurinha é um objeto com os campos:
+     - id (número inteiro)
+     - nome (texto)
+     - categoria (texto)
+   Use estas duas figurinhas:
+     - {id: 1, nome: "Alan Turing", categoria: IA"}
+     - {id: 2, nome: "John McCarthy", categoria: "IA"}
+Requisitos:
+  - Mantenha tudo que ja existe no arquivo
+  - Adicione comentários em portugues
+  - Não adicione nenhum endpoint alem desse dois
+
+Evolua o servidor da API de álbum de figurinhas para tambem servir as imagens das figurinhas como arquivos estáticos.
+Atualize o arquivo main.py com um servidor FastAPI que:
+  1. Use a aplicação com app = FastAPI()
+  2. Defina o Caminho absoluto da pasta de imagens (para o servidor encontrar a pasta independente de onde for executado):
+    PASTA_BASE = os.path.dirname(os.path.abspath(__file__))
+    PASTA_IMAGENS = os.path.join(PASTA_BASE, "figurinhas")
+  3. Configure os arquivos estaticos: "monte" a pasta PASTA_IMAGENS na rota "/imgs" usandoStaticFiles, comname="imga".
+     Assim, "figurinhas/01-alen-turing.jpg" fica acessivel em "/imgs/01-alan-turing.jpg".
+  4. Tenha  uma lista chamada "figurinhas"com 2 itens,,  cada um com os campos id, nome, categoria e imagem_url:
+    - {id: 1, nome: "Alan Turing",   categoria: "IA", imagem_url: "/imgs/01-alan-turing.jpg"}
+    - {id: 2, nome: "John McCarthy", categoria: "IA", imagem_url: "/imgs/02-john-mccarthy.jpg"}
+  5. Tenha apenas um endpoint: GET "/figurinhas" (função listar_figurinhas) que retorna a lista  de Fifurinhas.
+Requisitos:
+  - Use Python com FastAPI
+  - Adicione comentarios em portugues explicando cada parte
+  - Imports necessarios:
+    from fastapi import FastAPI
+    from fastapi.staticfiles import StaticFiles
+    import os
+
+# Prompts - Aula 04
+Você vai criar a versão final do servidor da API de álbum de figurinhas.
+Ele precisa liberar acesso para o frontend (CORS), listar as figurinhas e
+entregar a imagem de cada uma por um endpoint próprio.
+
+Crie um arquivo main.py com um servidor FastAPI que:
+
+1. Configure o middleware CORS para aceitar requisições de qualquer origem
+
+2. Defina caminhos absolutos para a pasta de imagens usando:
+   PASTA_BASE = os.path.dirname(os.path.abspath(__file__))
+   PASTA_IMAGENS = os.path.join(PASTA_BASE, "figurinhas")
+
+3. Crie uma lista chamada `figurinhas` com as 30 figurinhas,
+   cada uma com: id, nome, categoria, imagem_url
+   O imagem_url deve apontar para "/figurinhas/{id}/imagem"
+   Comente as figurinhas que ainda não estão disponíveis (ex: ids 3, 4, 5...)
+   Deixe ativas apenas as figurinhas cujas imagens existem na pasta figurinhas/
+
+4. Crie o endpoint GET "/figurinhas" que retorna a lista
+
+5. Crie o endpoint GET "/figurinhas/{id}/imagem" que:
+   - Usa glob para encontrar o arquivo com prefixo "{id:02d}[!0-9]*" na pasta figurinhas/
+   - Retorna 404 se não encontrar
+   - Retorna FileResponse com o arquivo encontrado
+
+Imports necessários:
+  from fastapi import FastAPI, HTTPException
+  from fastapi.responses import FileResponse
+  from fastapi.middleware.cors import CORSMiddleware
+  import os
+  import glob
